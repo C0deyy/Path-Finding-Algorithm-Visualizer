@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <title>Path Finding Algorithm Visualizer</title>
+
+ <link rel="stylesheet" type="text/css" href="styles/main.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="styles/magic.min.css">
+  <script src="https://kit.fontawesome.com/d1f3dd87b7.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+
+<!--Here onwards work for the navBar will begin-->
+<nav class="navbar navbar-expand-sm fixed-top navbar-dark bg-dark" id="myNavbar">
+  <a class="navbar-brand" href="#" id="logo">Find Your Path!</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active dropdown" id="algorithms">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+        arias-haspopup="true" aria-expanded="false">Algorithms</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a href="#" class="dropdown-item">Dijkstra's Algorithm</a>
+          <a href="#" class="dropdown-item">Breadth First Search</a>
+    
+        </div>
+      </li>
+      <li class="nav-item active dropdown">
+       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+        arias-haspopup="true" aria-expanded="false">Speed</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a href="#" class="dropdown-item">Fast</a>
+          <a href="#" class="dropdown-item">Medium</a>
+          <a href="#" class="dropdown-item">Slow</a>
+        </div>
+      </li>
+    </ul>
+
+    <button class="btn btn-success btn-space" type="submit" id="startBtn">Start</button>
+    <button type="button" class="btn btn-primary btn-space" type="submit" id="clearBtn">Clear Board</button>
+<button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModalLong">Website Info Modal</button>
+  </div>
+</nav>
+<!--Here the NavBar work will end-->
+
+
+<!--Here the legend and colour-description of the nodes visited will be shown  -->
+
+
+<div class="d-flex flex-row flex-wrap m-2 justify-content-around bg-light">	
+ 		<div class="d-flex p-2">
+ 			<div class="key wall"></div>  
+ 			<div> Wall</div>
+ 		</div>
+ 		<div class="d-flex p-2">
+ 			<div class="key start"></div>  
+ 			<div>Start</div>
+ 		</div>
+ 		<div class="d-flex p-2">
+ 			<div class="key end"></div>  
+ 			<div>Target</div>
+ 		</div>
+ 		<div class="d-flex p-2">
+ 			<div class="key searching"></div>  
+ 			<div>Searching</div>
+ 		</div>
+ 		<div class="d-flex p-2">
+ 			<div class="key visited"></div>  
+ 			<div>Visited</div>
+ 		</div>
+ 		<div class="d-flex p-2">
+ 			<div class="key success"></div>  
+ 			<div>Shortest-Path</div>
+ 		</div>
+ 		<div class="d-flex p-2">
+ 			<div class="key"></div>  
+ 			<div>Unvisited</div>
+ 		</div>
+ 	</div>
+<div class="d-flex flex-row flex-wrap m-2 justify-content-around bg-warning">	
+ 		<div class="d-flex p-2">
+ 			*The shortest path displayed is on the basis of the number of cell transitions.
+ 		</div>
+ 		
+ 	</div>
+<div class="d-flex flex-column align-items-center" id="bigTableContainer">
+    <div id="tableContainer"></div>    
+   </div>   
+
+
+<!--Here the legend work will finish-->
+
+
+<!-- This is  for the grid table of size 40*40-->
+<!--The CSS id used for this will (i) bigTableContainer and (ii) tableContainer-->
+<div class="d-flex flex-column align-items-center" id="bigTableContainer">
+    <div id="tableContainer"></div>    
+</div> 
+
+
+
+
+
+<!--More content to come after this, but before complete the above!-->
+
+<!--Adding a warning and Information flexbox-->
+
+  <div class="d-flex flex-column" id="results">
+    <!-- <div class="d-flex justify-content-center">
+    <i id="resultsIcon" class="fas fa-exclamation"></i>
+  </div> -->
+  <div id="duration" class="d-flex justify-content-center"> 
+     !
+   </div>
+   <div id="length" class="d-flex justify-content-center">  
+   	Please select an algorithm and press start.
+   </div>   
+</div>
+
+  </div>
+
+
+<!--This is our Info Modal!!!-->
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle" align="center">About this Project!!!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Welcome to the Path Finding Algorithm Visualizer Project!</p>
+
+        <p>This project was created to help visualize shortest-path algorithms, enabling users to find the shortest distance between any two points. This concept is highly practical for applications such as building rovers and vehicles that traverse long distances efficiently using basic algorithms.</p>
+        
+        <p>In this Project, the following two shortest-path finding algorithms are used:-
+        <li>Dijkstra's Algorithm</li>
+        <li>Breadth First Search Algorithm</li></p>
+
+        <p>You can select the desired Algorithm from the Algorithms Tab, then choose the speed of the animation, and click the Start Button to begin visualizing the process.</p>
+
+        <p>If you wish to reuse the table, simply click on the Clear Board button on the NavBar, which will remove all the walls and animated cells.</p>
+
+        <p>A flex-box at the bottom-right corner provides information about the time taken and the length of the shortest path traversed in units by the chosen algorithm.</p>
+
+        <p>Future enhancements include adding new algorithms such as A* and Jump Point Search after further study, and improving the website front-end and enhancing the styling.</p>
+
+        <p>Well wishes and happy browsing! :)</p>
+
+        <p>- Vinay</p>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="script.js"></script>
+</body>
+
+</html>
